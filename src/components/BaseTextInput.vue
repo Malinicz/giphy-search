@@ -1,26 +1,29 @@
 <template>
-  <styled-text-input class="text-input" />
+  <input
+    type="text"
+    v-bind:value="value"
+    v-on:input="$emit('input', $event.target.value)"
+  />
 </template>
 
 <script>
-import styled from 'vue-styled-components';
+export default {
+  props: ['value']
+};
+</script>
 
-export const StyledTextInput = styled.input`
+<style scoped>
+input {
+  margin-bottom: 15px;
   padding: 15px;
   width: 100%;
   height: 60px;
-  border-radius: ${({ theme }) => theme.borderRadius}px;
   border: none;
-  box-shadow: ${({ theme }) => theme.boxShadow};
+  border-radius: 12px;
+  box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.2);
+}
 
-  &:focus {
-    z-index: 1;
-  }
-`;
-
-export default {
-  components: {
-    'styled-text-input': StyledTextInput
-  }
-};
-</script>
+input:focus {
+  z-index: 1;
+}
+</style>

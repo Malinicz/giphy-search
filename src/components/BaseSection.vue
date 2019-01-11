@@ -1,20 +1,12 @@
 <template>
-  <styled-section> <slot /> </styled-section>
+  <section><slot /></section>
 </template>
 
-<script>
-import styled from 'vue-styled-components';
-
-export const StyledSection = styled.section`
+<style scoped>
+section {
   display: flex;
   justify-content: center;
+  padding-top: 50px;
   width: 100%;
-  max-width: ${({ theme }) => theme.maxWidth}px;
-`;
-
-export default {
-  components: {
-    'styled-section': StyledSection
-  }
-};
-</script>
+}
+</style>

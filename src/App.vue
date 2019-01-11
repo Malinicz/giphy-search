@@ -1,33 +1,15 @@
 <template>
-  <theme-provider v-bind:theme="theme">
-    <div id="app">
-      <header>
-        <img src="./assets/logo.svg" id="logo" />
-        <div id="nav">
-          <router-link :to="{ name: 'home' }">Home</router-link> |
-          <router-link :to="{ name: 'favorites' }">Favorites</router-link>
-        </div>
-      </header>
-      <BaseMain><router-view /></BaseMain>
-    </div>
-  </theme-provider>
+  <div id="app">
+    <header>
+      <img src="./assets/logo.svg" id="logo" />
+      <div id="nav">
+        <router-link :to="{ name: 'home' }">Home</router-link> |
+        <router-link :to="{ name: 'favorites' }">Favorites</router-link>
+      </div>
+    </header>
+    <BaseMain><router-view /></BaseMain>
+  </div>
 </template>
-
-<script>
-import { ThemeProvider } from 'vue-styled-components';
-import theme from '@/styles/theme';
-
-export default {
-  components: {
-    'theme-provider': ThemeProvider
-  },
-  data() {
-    return {
-      theme
-    };
-  }
-};
-</script>
 
 <style>
 @font-face {

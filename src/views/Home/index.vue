@@ -1,5 +1,5 @@
 <template>
-  <BaseSection :style="{ paddingTop: '50px' }"><SearchBar /></BaseSection>
+  <BaseSection><SearchBar /></BaseSection>
 </template>
 
 <script>
