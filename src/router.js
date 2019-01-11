@@ -10,18 +10,18 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: () => import(/* webpackChunkName: "home" */ './views/Home.vue')
+      component: () => import(/* webpackChunkName: "home" */ './views/Home')
     },
     {
       path: '/favorites',
       name: 'favorites',
       component: () =>
-        import(/* webpackChunkName: "favorites" */ './views/Favorites.vue')
+        import(/* webpackChunkName: "favorites" */ './views/Favorites')
     },
     {
       path: '*',
       component: () =>
-        import(/* webpackChunkName: "notFound" */ './views/NotFound.vue')
+        import(/* webpackChunkName: "notFound" */ './views/NotFound')
     }
   ]
 });
