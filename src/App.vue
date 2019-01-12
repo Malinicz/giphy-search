@@ -2,14 +2,31 @@
   <div id="app">
     <header>
       <img src="./assets/logo.svg" id="logo" />
-      <div id="nav">
-        <router-link :to="{ name: 'home' }">Home</router-link> |
-        <router-link :to="{ name: 'favorites' }">Favorites</router-link>
-      </div>
+      <NavBar />
     </header>
     <BaseMain><router-view /></BaseMain>
   </div>
 </template>
+
+<script>
+import NavBar from '@/components/NavBar';
+
+export default {
+  created() {
+    this.$store.dispatch('gifs/fetchRandomGifs', { offset: 0 });
+
+    const favoriteGifs = localStorage.getItem('favoriteGifs');
+    if (favoriteGifs) {
+      this.$store.dispatch('favoriteGifs/setFavoriteGifs', {
+        favoriteGifs: JSON.parse(favoriteGifs)
+      });
+    }
+  },
+  components: {
+    NavBar
+  }
+};
+</script>
 
 <style>
 @font-face {
@@ -43,6 +60,12 @@ body {
   background-color: #ffffff;
 }
 
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 input {
   font-family: 'CairoRegular', Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -60,19 +83,7 @@ button {
 }
 
 #logo {
-  padding-top: 50px;
-}
-
-#nav {
-  padding-top: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+  padding: 50px 15px 0px 15px;
+  width: 100%;
 }
 </style>

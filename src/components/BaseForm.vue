@@ -6,4 +6,9 @@
 form {
   display: flex;
 }
+@media (max-width: 500px) {
+  form {
+    flex-direction: column;
+  }
+}
 </style>

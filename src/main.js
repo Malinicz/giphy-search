@@ -4,7 +4,7 @@ import camelCase from 'lodash/camelCase';
 
 import App from './App.vue';
 import router from './router';
-import store from './store';
+import store from './store/store';
 
 // register base components globally
 const requireComponent = require.context(

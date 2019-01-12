@@ -9,12 +9,20 @@
       <template slot="label">
         Search
       </template>
+      <template slot="icon">
+        <BaseIcon name="search" :style="{ marginRight: '5px' }" />
+      </template>
     </BaseButton>
   </BaseForm>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
+  created() {
+    this.searchValue = this.gifs.currentSearchValue;
+  },
   data() {
     return {
       searchValue: ''
@@ -22,8 +30,13 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log('submitting', this.searchValue);
+      this.searchValue
+        ? this.$store.dispatch('gifs/searchGifs', { query: this.searchValue })
+        : this.$store.dispatch('gifs/fetchRandomGifs');
     }
+  },
+  computed: {
+    ...mapState(['gifs'])
   }
 };
 </script>
