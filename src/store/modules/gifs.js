@@ -81,24 +81,15 @@ export const actions = {
         console.log('error: ', error);
       });
   },
-  fetchNextPage({ dispatch, state, getters }) {
+  fetchNextPage({ dispatch, getters }) {
     const offset = getters.getNextOffset();
-
-    switch (state.fetchType) {
-      case 'fetchRandomGifs':
-        return dispatch('fetchRandomGifs', { offset });
-      case 'searchGifs':
-        return dispatch('searchGifs', {
-          query: state.currentSearchValue,
-          offset
-        });
-      default:
-        return;
-    }
+    dispatch('fetchGifsByCurrentFetchType', { offset });
   },
-  fetchPreviousPage({ dispatch, state, getters }) {
+  fetchPreviousPage({ dispatch, getters }) {
     const offset = getters.getPreviousOffset();
-
+    dispatch('fetchGifsByCurrentFetchType', { offset });
+  },
+  fetchGifsByCurrentFetchType({ dispatch, state }, { offset }) {
     switch (state.fetchType) {
       case 'fetchRandomGifs':
         return dispatch('fetchRandomGifs', { offset });
