@@ -2,10 +2,6 @@
 
 Gif search app written in Vue.js
 
-##TODO
-
-- implement error handling
-- implement caching
 
 ## Project setup
 
@@ -38,3 +34,8 @@ yarn run test
 ```
 yarn run lint
 ```
+
+## TODO
+
+- implement error handling
+- implement caching
