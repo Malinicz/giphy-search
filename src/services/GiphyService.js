@@ -3,7 +3,7 @@ import axios from 'axios';
 export const DEFAULT_LIMIT = 25;
 
 const apiClient = axios.create({
-  baseURL: 'http://api.giphy.com/v1/gifs',
+  baseURL: 'https://api.giphy.com/v1/gifs',
   withCredentials: false,
   headers: {
     Accept: 'application/json',

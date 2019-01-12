@@ -2,7 +2,14 @@
 
 Gif search app written in Vue.js
 
+##TODO
+
+- implement error handling
+- implement caching
+
 ## Project setup
+
+For development, add .env.local file with environmental variable VUE_APP_GIPHY_API_KEY
 
 ```
 yarn install
