@@ -31,8 +31,11 @@ export default {
   methods: {
     onSubmit() {
       this.searchValue
-        ? this.$store.dispatch('gifs/searchGifs', { query: this.searchValue })
-        : this.$store.dispatch('gifs/fetchRandomGifs');
+        ? this.$store.dispatch('gifs/searchGifs', {
+            query: this.searchValue,
+            offset: 0
+          })
+        : this.$store.dispatch('gifs/fetchRandomGifs', { offset: 0 });
     }
   },
   computed: {
