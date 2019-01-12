@@ -1,6 +1,9 @@
 <template>
   <BaseSection
     ><SearchBar />
+    <div v-show="isListEmpty" class="empty-content">
+      There are no images for given search phrase
+    </div>
     <BaseGifsHolder>
       <Gif v-for="gif in gifs.gifs" :key="gif.id" :gif="gif"
     /></BaseGifsHolder>
@@ -46,8 +49,11 @@ export default {
       return offset < total_count - count;
     },
     hasPreviousPage(state) {
-      const { offset, count } = state.gifs.pagination;
-      return offset - count >= 0;
+      const { offset } = state.gifs.pagination;
+      return offset > 0;
+    },
+    isListEmpty(state) {
+      return state.gifs.gifs && state.gifs.gifs.length === 0;
     },
     ...mapState(['gifs', 'favoriteGifs'])
   }
@@ -75,5 +81,8 @@ export default {
   color: #f0a293;
   margin: 5px;
   font-size: 18px;
+}
+.empty-content {
+  padding-top: 50px;
 }
 </style>

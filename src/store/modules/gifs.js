@@ -46,7 +46,7 @@ export const actions = {
         const gifs = response.data.data.map(gif => {
           return {
             id: gif.id,
-            url: getGifUrl(gif.id),
+            url: gif.images.fixed_height_downsampled.url,
             isFavorite: !!rootState.favoriteGifs.favoriteGifs.find(
               favoriteGif => favoriteGif.id === gif.id
             )
@@ -67,7 +67,7 @@ export const actions = {
         const gifs = response.data.data.map(gif => {
           return {
             id: gif.id,
-            url: getGifUrl(gif.id),
+            url: gif.images.fixed_height_downsampled.url,
             isFavorite: !!rootState.favoriteGifs.favoriteGifs.find(
               favoriteGif => favoriteGif.id === gif.id
             )
@@ -127,7 +127,3 @@ export const getters = {
     return state.pagination.offset - DEFAULT_LIMIT;
   }
 };
-
-function getGifUrl(gifId) {
-  return `https://media.giphy.com/media/${gifId}/giphy.gif`;
-}
